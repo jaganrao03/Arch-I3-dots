@@ -1,0 +1,264 @@
+; ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+; ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+; ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+; ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+; ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+; ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+; Polybar Config 2020-08-04
+;
+
+[colors]
+
+background = #aa2F343F
+;background = ${xrdb:background:#000000}
+;color1 = ${xrdb:color5:#ff5555}
+color1 = #FF7F50
+color2 = ${xrdb:color4:#ff5555}
+color3 = ${xrdb:color7:#ff5555}
+
+; ██████╗  █████╗ ██████╗ 
+; ██╔══██╗██╔══██╗██╔══██╗
+; ██████╔╝███████║██████╔╝
+; ██╔══██╗██╔══██║██╔══██╗
+; ██████╔╝██║  ██║██║  ██║
+; ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+
+[bar/bar]
+
+locale = en_US.UTF-8
+enable-ipc=true
+height = 35
+width = 100%
+bottom = false
+fixed-center = true
+offset-x = 0
+offset-y = 0
+padding = 3
+separator = " | "
+separator-foreground = #636363
+module-margin-left = 1
+module-margin-right = 1
+spacing = 0
+dim-value = 1.0
+tray-position = center
+tray-offset-x = 280
+tray-transparent = true
+tray-padding = 2
+tray-detached = false
+tray-background = ${colors.background}
+
+background = ${colors.background}
+;background = ${colors.primary}
+foreground = ${colors.color1}
+
+line-size = 2
+
+font-0 = mononoki Nerd Font:style=Bold:pixelsize=12;1
+font-1 = FontAwesome:fontformat=truetype:size=11;1
+font-3 = Font Awesome 5 Free:style=Regular:pixelsize=11;1
+font-4 = Font Awesome 5 Free:style=Solid:pixelsize=11;1
+font-5 = Font Awesome 5 Brands:pixelsize=11;1
+font-2 = sm4tik:pixelsize=11;1
+
+modules-left = activity i3 xwindow
+modules-center = date
+modules-right = memory cpu temperature battery backlight pulseaudio sysmenu
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+wm-restack = i3
+override-redirect = false
+
+; ███╗   ███╗ ██████╗ ██████╗ ██╗   ██╗██╗     ███████╗███████╗
+; ████╗ ████║██╔═══██╗██╔══██╗██║   ██║██║     ██╔════╝██╔════╝
+; ██╔████╔██║██║   ██║██║  ██║██║   ██║██║     █████╗  ███████╗
+; ██║╚██╔╝██║██║   ██║██║  ██║██║   ██║██║     ██╔══╝  ╚════██║
+; ██║ ╚═╝ ██║╚██████╔╝██████╔╝╚██████╔╝███████╗███████╗███████║
+; ╚═╝     ╚═╝ ╚═════╝ ╚═════╝  ╚═════╝ ╚══════╝╚══════╝╚══════╝
+
+[module/activity]
+type = custom/text
+
+content = 
+;content = 
+;content-background = ${colors.background}
+content-foreground = ${colors.color3}
+content-padding = 1
+
+click-left = exec .config/rofi/scripts/appsmenu.sh
+click-right = exec .config/rofi/scripts/appsmenu.sh
+
+[module/xwindow]
+type = internal/xwindow
+label = [ %title:0:50:...% ]
+label-foreground = ${colors.color3}
+label-background = ${colors.background}
+
+[module/i3]
+type = internal/i3
+pin-workspaces = true
+enable-click = true
+enable-scroll = true
+format-padding = 0
+content-foreground = ${colors.color3}
+content-padding = 1
+
+label-focused-underline = ${colors.background}
+label-urgent-underline = #FF0000
+label-urgent-underline-padding = 2
+label-focused-foreground = ${colors.color3}
+label-focused-padding = 2
+label-unfocused-padding = 2
+label-urgent-background = ${colors.background}
+label-urgent-padding = 2
+
+[module/date]
+type = internal/date
+interval = 1.0
+time = %H:%M
+time-alt = %a %B %d, %Y
+label-foreground = ${colors.color3}
+label-background = ${colors.background}
+format = <label>
+label = %time%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " "
+format-prefix-foreground = #fff
+label = %percentage_used%%
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-foreground = #fff
+format-underline = #f90000
+label = %percentage%%
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <ramp> <label>
+format-underline = #f50a4d
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.format-underline}
+
+label = %temperature%
+label-warn = %temperature%
+label-warn-foreground = ${colors.secondary}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-foreground = #fff
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+time-format =  %Hh:%Mm
+label-charging = %percentage%% - %time%
+label-discharging = %percentage%% - %time%
+format-charging = <animation-charging>  <label-charging>
+format-discharging = <animation-discharging>  <label-discharging>
+format-full-prefix = "  "
+format-full-prefix-foreground = #fff
+poll-interval = 1
+
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-3 = 
+animation-discharging-4 = 
+animation-discharging-framerate = 500
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-foreground = #fff
+animation-charging-framerate = 500
+
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
+format = <ramp> <label>
+label = %percentage%%
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+
+[module/pulseaudio]
+type = internal/pulseaudio
+click-left = muted
+click-right = exec pavucontrol
+; You can find the different card numbers in `/proc/asound/cards`
+;;master-soundcard = default
+;;speaker-soundcard = default
+;;headphone-soundcard = default
+
+; Default: Master
+;;master-mixer = Master
+
+; Optionally define speaker and headphone mixers
+; Default: none
+;;speaker-mixer = Speaker
+; Default: none
+;;headphone-mixer = Headphone
+
+; Default: 5
+;;interval = 5
+
+; Available tags:
+;   <label-volume> (default)
+;   <ramp-volume>
+;   <bar-volume>
+format-volume = <ramp-volume>
+
+; Available tags:
+;   <label-muted> (default)
+;   <ramp-volume>
+;   <bar-volume>
+;format-muted = <label-muted>
+
+; Available tokens:
+;   %percentage% (default)
+label-volume = %percentage%%
+format-volume-foreground = ${colors.color3}
+format-volume-background = ${colors.background}
+
+; Available tokens:
+;%percentage%
+label-muted = ﱝ
+label-muted-foreground = ${colors.color1}
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+
+[module/sysmenu]
+type = custom/text
+
+content = 
+;;content-background = ${color.bg}
+content-foreground = ${colors.color3}
+content-padding = 0
+
+click-left = exec rofi -modi system:$HOME/.config/rofi/scripts/powermenu.sh -show system -theme themes/system-menu -font "Iosevka 13"
+click-right = exec rofi -modi system:$HOME/.config/rofi/scripts/powermenu.sh -show system -theme themes/system-menu -font "Iosevka 13"
