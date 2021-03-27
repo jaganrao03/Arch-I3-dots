@@ -214,11 +214,12 @@ for_window [class="Nm-connection-editor"] floating enable
 
 # Press $mod+o followed by either f, t, Escape or Return to launch firefox,
 # thunderbird or return to the default mode, respectively.
-set $mode_launcher Launch: [f]irefox [t]or
+set $mode_launcher Launch: [f]irefox [v]ivaldi [t]or
 bindsym $mod+b mode "$mode_launcher"
 
 mode "$mode_launcher" {
     bindsym f exec firefox
+    bindsym v exec vivaldi-stable
     bindsym t exec torbrowser-launcher
 
     bindsym Escape mode "default"
