@@ -70,9 +70,6 @@ client.placeholder      $bg     $bg     $fg  $bg       $bg
 
 client.background       $bg
 
-# PROTIP: You can also dynamically set dmenu's colors this way:
-#bindsym $mod+d exec dmenu_run -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"
-
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
@@ -163,7 +160,7 @@ set $workspace6 ""
 set $workspace7 ""
 set $workspace8 ""
 set $workspace9 ""
-set $workspace10 ""
+set $workspace10 ""
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -194,17 +191,12 @@ assign [class="alacritty"] $workspace1
 assign [class="firefox"] $workspace2
 assign [class="Tor Browser"] $workspace2
 assign [class="Nautilus"] $workspace3
-assign [class="TelegramDesktop"] $workspace3
 assign [class="Vlc"] $workspace4
-assign [class="Spotify"] $workspace10
-for_window [class="Spotify"] move to workspace $workspace10 
 
 # windows starting in floating mode
 for_window [instance="origin.exe"] floating enable
 for_window [title="File Transfer*"] floating enable
 for_window [class="Lightdm-gtk-greeter-settings"] floating enable
-#for_window [class="Spotify"] floating enable
-for_window [class="ktorrent"] floating enable 
 for_window [class="lxappearance"] floating enable 
 for_window [class="etcher"] floating enable 
 for_window [class="Arandr"] floating enable
@@ -214,11 +206,12 @@ for_window [class="Nm-connection-editor"] floating enable
 
 # Press $mod+o followed by either f, t, Escape or Return to launch firefox,
 # thunderbird or return to the default mode, respectively.
-set $mode_launcher Launch: [f]irefox [t]or
+set $mode_launcher Launch: [f]irefox [v]ivaldi [t]or 
 bindsym $mod+b mode "$mode_launcher"
 
 mode "$mode_launcher" {
     bindsym f exec firefox
+    bindsym v exec vivaldi-stable
     bindsym t exec torbrowser-launcher
 
     bindsym Escape mode "default"

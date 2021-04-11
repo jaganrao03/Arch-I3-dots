@@ -5,15 +5,14 @@
 ; ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
 ; ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
 ;
-; Polybar Config 2020-08-04
 ;
 
 [colors]
 
 background = #aa2F343F
 ;background = ${xrdb:background:#000000}
-;color1 = ${xrdb:color5:#ff5555}
-color1 = #FF7F50
+;color1 = ${xrdb:color1:#ff5555}
+color1 = #FF7500
 color2 = ${xrdb:color4:#ff5555}
 color3 = ${xrdb:color7:#ff5555}
 
