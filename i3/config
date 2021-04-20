@@ -200,7 +200,6 @@ for_window [class="Lightdm-gtk-greeter-settings"] floating enable
 for_window [class="lxappearance"] floating enable 
 for_window [class="etcher"] floating enable 
 for_window [class="Arandr"] floating enable
-for_window [class="Pamac-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Nm-connection-editor"] floating enable 
 
@@ -278,8 +277,8 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Backlight key bindings
-bindsym XF86MonBrightnessUp exec brightnessctl -d intel_backlight s 10%+
-bindsym XF86MonBrightnessDown exec brightnessctl -d intel_backlight s 10%-
+bindsym XF86MonBrightnessUp exec brightnessctl -d intel_backlight s 5%+
+bindsym XF86MonBrightnessDown exec brightnessctl -d intel_backlight s 5%-
 
 # screenshot
 bindsym Print exec spectacle -f -c Pictures/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
@@ -308,7 +307,6 @@ exec --no-startup-id .config/conky/start_conky
 exec --no-startup-id xset dpms 500
 exec --no-startup-id xautolock -time 10 -locker "betterlockscreen -l dim"
 exec --no-startup-id mpd
-exec_always --no-startup-id wal -R -n
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1 
 exec --no-startup-id telegram-desktop

@@ -35,6 +35,16 @@ end
 
 
 ## Functions
+# Function for fcd and open
+
+function fcd
+   cd (find -type d | fzf)
+end
+
+function open
+   xdg-open (find -type f | fzf)
+end
+
 # Functions needed for !! and !$ https://github.com/oh-my-fish/plugin-bang-bang
 function __history_previous_command
   switch (commandline -t)
