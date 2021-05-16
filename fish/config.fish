@@ -37,6 +37,14 @@ end
 ## Functions
 # Function for fcd and open
 
+function ins
+ pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S
+end
+
+function rem
+ pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rns
+end
+
 function fcd
    cd (find -type d | fzf)
 end

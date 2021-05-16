@@ -11,11 +11,18 @@
 [[ $- != *i* ]] && return
 
 # Few tricks for opening directories and files
+
+ins() {
+	pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S
+}
+rem() {
+	pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rns
+}
 fcd() {
-  cd "$(find -type d | fzf)"
+	cd "$(find -type d | fzf)"
 }
 open() {
-  xdg-open "$(find -type f | fzf)"
+	xdg-open "$(find -type f | fzf)"
 }
 
 ## Useful aliases
@@ -71,7 +78,7 @@ alias tb='nc termbin.com 9999'
 alias paru="paru --bottomup"
 
 # Cleanup orphaned packages
-alias orphans='sudo pacman -Rns (pacman -Qtdq)'
+alias orphans='sudo pacman -Rns $(pacman -Qtdq)'
 
 # Get the error messages from journalctl
 alias jctl="journalctl -p 3 -xb"
@@ -125,3 +132,4 @@ if [ -f $1 ] ; then
 eval "$(starship init bash)"
 
 #neofetch
+. "$HOME/.cargo/env"
