@@ -12,6 +12,12 @@
 
 # Few tricks for opening directories and files
 
+pins() {
+	paru -Slq | fzf --multi --preview 'paru -Si {1}' | xargs -ro paru -S
+}
+prem() {
+	paru -Qq | fzf --multi --preview 'paru -Qi {1}' | xargs -ro paru -Rns
+}
 ins() {
 	pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S
 }

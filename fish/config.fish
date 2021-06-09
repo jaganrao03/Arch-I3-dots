@@ -35,7 +35,14 @@ end
 
 
 ## Functions
-# Function for fcd and open
+
+function pins
+ paru -Slq | fzf --multi --preview 'paru -Si {1}' | xargs -ro paru -S
+end
+
+function prem
+ paru -Qq | fzf --multi --preview 'paru -Qi {1}' | xargs -ro paru -Rns
+end
 
 function ins
  pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S
