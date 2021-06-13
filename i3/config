@@ -25,7 +25,7 @@ new_float normal 1
 hide_edge_borders none
 
 # i3 gaps
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 1
 gaps inner 10
 gaps outer 2
 smart_gaps on
@@ -58,8 +58,8 @@ font pango:Droid Sans 10
 # from the generated scheme.
 # NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
 # it fails to get colors from Xresources.
-set_from_resource $fg i3wm.color2 #f0f0f0
-set_from_resource $bg i3wm.color7 #f0f0f0
+set_from_resource $fg i3wm.color2 #green #f0f0f0 
+set_from_resource $bg i3wm.color7 #white #f0f0f0 
 
 # class                 border  backgr. text indicator child_border
 client.focused          $fg     $fg     $fg  $fg       $fg
@@ -75,23 +75,26 @@ client.background       $bg
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+floating_modifier Mod1
 
 # Window Key Bindings
 bindsym $mod+Return exec kitty 
 bindsym $mod+Shift+Return exec alacritty
 
+# Ranger Key Binding
+bindsym $mod+Shift+t exec kitty -e ranger
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+z exec dmenu_run -b -nb "$color0" -nf "$color15" -sb "$color1" -sf "$color15"
+#bindsym $mod+z exec dmenu_run -b -nb "$color0" -nf "$color15" -sb "$color1" -sf "$color15"
 
 # start rofi (dmenu mode)
 bindsym $mod+d exec .config/rofi/scripts/appsmenu.sh
 
 # start rofi (window mode)
-bindsym $mod+Tab exec exec rofi -theme themes/appsmenu -show window -font "Iosevka 13"
+bindsym Mod1+Tab exec exec rofi -theme themes/appsmenu -show window -font "Iosevka 13"
 
 # open empty container
 #bindsym $mod+Shift+Return exec i3-msg open
@@ -147,7 +150,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+z focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -189,8 +192,9 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 # open applications on specific workspaces
 assign [class="alacritty"] $workspace1
 assign [class="firefox"] $workspace2
+assign [class="vivaldi-stable"] $workspace2
 assign [class="Tor Browser"] $workspace2
-assign [class="Nautilus"] $workspace3
+assign [class="kitty -e ranger"] $workspace3
 assign [class="Vlc"] $workspace4
 
 # windows starting in floating mode
@@ -215,6 +219,7 @@ mode "$mode_launcher" {
 
     bindsym Escape mode "default"
     bindsym Return mode "default"
+    bindsym $mod+b mode "default"
 }
 
 # reload the configuration file
@@ -296,7 +301,7 @@ exec_always --no-startup-id xrandr --output DisplayPort-0 --off --output HDMI-0 
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec --no-startup-id kitty
 exec --no-startup-id firefox
-exec --no-startup-id nautilus
+exec --no-startup-id kitty -e ranger 
 exec --no-startup-id redshift-gtk
 exec --no-startup-id nm-applet
 exec_always --no-startup-id picom -b
