@@ -286,9 +286,9 @@ bindsym XF86MonBrightnessUp exec brightnessctl -d intel_backlight s 5%+
 bindsym XF86MonBrightnessDown exec brightnessctl -d intel_backlight s 5%-
 
 # screenshot
-bindsym Print exec spectacle -f -c Pictures/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
-bindsym $mod+Print exec spectacle -a -c Pictures/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
-bindsym $mod+Shift+Print exec spectacle -r -c Pictures/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym Print exec maim ~/Pictures/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym $mod+Print exec maim -s ~/Pictures/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym $mod+Shift+Print exec maim -s | xclip -selection clipboard -target image/png
 
 # shut down, restart and locking features
 bindsym $mod+Delete exec rofi -modi system:.config/rofi/scripts/powermenu.sh -show system -theme themes/system-menu -font "Iosevka 13"

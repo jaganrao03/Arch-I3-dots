@@ -3,4 +3,5 @@ set laststatus=2
 set t_Co=256
 set nu
 syntax on
-
+syntax enable
+filetype plugin indent on
