@@ -23,7 +23,7 @@ font:
   italic:
     family: mononoki Nerd Font
     style: Italic
-  size: 9
+  size: 13
   offset:
     x: 0
     y: 0
@@ -39,7 +39,7 @@ draw_bold_text_with_bright_colors: true
 colors:
   # Default colors
   primary:
-    background: '0x181818'
+    background: '0x263238'
     foreground: '0xd8d8d8'
 
   # Normal colors

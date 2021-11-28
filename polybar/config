@@ -9,7 +9,8 @@
 [color]
 
 ;; main colors
-background = #aa212B30
+;;background = #aa212B30
+background = #aa181818
 foreground = #C4C7C5
 sep = #3F5360
 
@@ -65,7 +66,7 @@ dim-value = 1.0
 radius-top = 0.0
 radius-bottom = 0.0
 tray-position = center
-tray-offset-x = 330
+tray-offset-x = 420
 tray-transparent = true
 tray-padding = 0
 tray-scale = 1.0
@@ -151,7 +152,7 @@ label-mode-background = #e60053
 ;label-focused = %icon%
 label-focused-foreground = #ffffff
 label-focused-background = #3f3f3f
-label-focused-underline = #fba922
+label-focused-underline = #a232b7
 label-focused-padding = 4
 ;label-unfocused = %icon%
 label-unfocused-padding = 4
@@ -212,7 +213,7 @@ label-unmounted = " %mountpoint%: NA"
 
 [module/xwindow]
 type = internal/xwindow
-label = [ %title:0:50:...% ]
+label = [ %title:0:39:...% ]
 label-foreground = ${colors.white}
 label-background = ${colors.background}
 
@@ -258,7 +259,7 @@ type = internal/date
 interval = 1.0
 date = %A, %d %B
 date-alt = It's %A, %d %B %Y
-time = at %I:%M %p
+time = %I:%M %p
 time-alt = at %k:%M:%S
 label-foreground = ${colors.white}
 label-background = ${colors.background}
@@ -329,7 +330,7 @@ format-muted-prefix = 
 format-muted-prefix-foreground = ${color.red}
 label-volume = %percentage%%
 label-muted = " Muted"
-label-muted-foreground = ${color.sep}
+label-muted-foreground = ${color.white}
 scroll-up = increase volume
 scroll-down = decrease volume
 click-left = muted
