@@ -1,9 +1,3 @@
-/*
-# www.jirrezdex.com
-# contato@jirrezdex.com
-# Jirrez Matheus
-*/
-
 * {
     selected-normal-foreground:  rgba ( 40, 23, 89, 80 % );
     foreground:                  rgba ( 0, 0, 0, 100 % );

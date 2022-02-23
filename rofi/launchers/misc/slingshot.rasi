@@ -5,7 +5,7 @@
 configuration {
 	font:							"mononoki Nerd Font 10";
     show-icons:                     true;
-	icon-theme: 					"Sweet";
+	icon-theme: 					"BeautyLine";
     display-drun: 					"";
     drun-display-format:            "{name}";
     disable-history:                false;

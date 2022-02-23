@@ -10,7 +10,7 @@
 configuration {
     drun-display-format: "{icon}";
 	show-icons: true;
-	icon-theme: "Papirus";
+	icon-theme: "BeautyLine";
 	location: 2;
 	fake-transparency: false;
 	hide-scrollbar: true;
