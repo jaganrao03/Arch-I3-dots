@@ -8,15 +8,15 @@
 
 # If not running interactively, don't do anything
 
-[[ $- != *i* ]] && return
+# [[ $- != *i* ]] && return
 
 # Few tricks for opening directories and files
 
-pins() {
-	paru -Slq | fzf --multi --preview 'paru -Si {1}' | xargs -ro paru -S
+yins() {
+	yay -Slq | fzf --multi --preview 'yay -Si {1}' | xargs -ro yay -S
 }
-prem() {
-	paru -Qq | fzf --multi --preview 'paru -Qi {1}' | xargs -ro paru -Rns
+yrem() {
+	yay -Qq | fzf --multi --preview 'yay -Qi {1}' | xargs -ro yay -Rns
 }
 ins() {
 	pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S
@@ -41,7 +41,7 @@ alias l.="exa -a | egrep '^\.'"                                     # show only 
 
 # Replace some more things with better alternatives
 alias cat='bat --style header --style rules --style snip --style changes --style header'
-[ ! -x /usr/bin/yay ] && [ -x /usr/bin/paru ] && alias yay='paru --bottomup'
+[ ! -x /usr/bin/yay ] && [ -x /usr/bin/yay ] && alias yay='yay --bottomup'
 
 # Common use
 alias aup="pamac upgrade --aur"
@@ -81,7 +81,7 @@ alias pacdiff='sudo -H DIFFPROG=meld pacdiff'               # Compare .pacnew & 
 alias helpme='cht.sh --shell'
 alias please='sudo'
 alias tb='nc termbin.com 9999'
-alias paru="paru --bottomup"
+alias yay="yay --bottomup"
 
 # Cleanup orphaned packages
 alias orphans='sudo pacman -Rns $(pacman -Qtdq)'
@@ -137,5 +137,5 @@ if [ -f $1 ] ; then
 
 eval "$(starship init bash)"
 
-#neofetch
-. "$HOME/.cargo/env"
+neofetch | lolcat
+# . "$HOME/.cargo/env"
